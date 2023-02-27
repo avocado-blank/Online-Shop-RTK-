@@ -52,6 +52,12 @@ const ShopCart = createSlice({
       )
       state.cartItems.splice(itemIndex, 1)
       state.cartTotalQuantity = state.cartItems.length
+      let total = state.cartItems.map((item) => item.price * item.cartQuantity)
+      console.log(total)
+      state.cartTotalAmount = total.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0,
+      )
       let setlocaldata = [
         { name: 'cartItems', data: state.cartItems },
         { name: 'cartQuantity', data: state.cartTotalQuantity },
@@ -63,6 +69,12 @@ const ShopCart = createSlice({
     removeAllFromCart(state) {
       state.cartItems = []
       state.cartTotalQuantity = state.cartItems.length
+      let total = state.cartItems.map((item) => item.price * item.cartQuantity)
+      console.log(total)
+      state.cartTotalAmount = total.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0,
+      )
       let setlocaldata = [
         { name: 'cartItems', data: state.cartItems },
         { name: 'cartQuantity', data: state.cartTotalQuantity },
